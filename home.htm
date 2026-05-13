@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💜 Nosso Amor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- MENU -->
+<div class="menu">
+  <a href="#inicio">Início</a>
+  <a href="#musica"> Música</a>
+  <a href="#mensagem"> Mensagem</a>
+  <a href="#historia"> História</a>
+</div>
+
+<!-- INÍCIO -->
+<section id="inicio" class="secao inicio animar">
+  <h1>💜Kauany e Clara💜</h1>
+  <p class="subtitulo">Uma história escrita pelos Céus</p>
+</section>
+
+<!-- MÚSICA -->
+<section id="musica" class="secao animar fade-left">
+
+  <h2>🎶 Nossa Música 🎶</h2>
+
+  <div class="youtube-box">
+
+    <img src="img/5.jpg" class="youtube-capa">
+
+    <h3>💜 Nossa Música 💜</h3>
+
+    <p>Carol Biazin - Amor Traumatizado</p>
+    <a 
+  href="https://youtu.be/Yb9rPuGVSrU?si=oQ5qHIUNDb4w5OHf"
+  target="_blank"
+  class="youtube-btn"
+>
+  ▶ Ouvir Nossa Música
+</a>
+  </div>
+
+</section>
+<!-- MENSAGEM -->
+<section id="mensagem" class="secao animar fade-right">
+  <h2>💌 Nosso Tempo</h2>
+
+  <div class="contador">
+
+    <div class="tempo">
+      <span id="dias">0</span>
+      <p>Dias</p>
+    </div>
+
+    <div class="tempo">
+      <span id="horas">0</span>
+      <p>Horas</p>
+    </div>
+
+    <div class="tempo">
+      <span id="minutos">0</span>
+      <p>Min</p>
+    </div>
+
+    <div class="tempo">
+      <span id="segundos">0</span>
+      <p>Seg</p>
+    </div>
+
+  </div>
+</div>
+  <button onclick="mostrarMensagem()" class="btn-msg">
+    Clique aqui 💖
+  </button>
+
+  <p id="texto"></p>
+</section>
+
+<!-- HISTÓRIA -->
+<section id="historia" class="secao animar">
+  <h2>💖 Nossa História</h2>
+
+  <div class="momento animar visivel">
+  <img src="img/1.jpg">
+
+  <div class="conteudo-momento">
+    <span class="data">29/03/2025</span>
+
+    <p>
+      Estávamos no mesmo lugar e nem sabíamos a história que teriamos
+    </p>
+  </div>
+</div>
+
+<div class="momento animar visivel">
+  <img src="img/2.jpg">
+
+  <div class="conteudo-momento">
+    <span class="data">24/04/2025</span>
+
+    <p>
+      O primeiro presente que ganhei
+    </p>
+  </div>
+</div>
+
+<div class="momento animar visivel">
+  <img src="img/3.jpg">
+
+  <div class="conteudo-momento">
+    <span class="data">28/04/2025</span>
+
+    <p>
+      A primeira vez que viu meu pai e ficou aqui em casa
+    </p>
+  </div>
+</div>
+
+<div class="momento animar visivel">
+  <img src="img/8.jpg">
+
+  <div class="conteudo-momento">
+    <span class="data">02/05/2025</span>
+
+    <p>
+      O dia que comprei seu primeiro presente 
+    </p>
+  </div>
+</div>
+
+<div class="momento animar visivel">
+  <img src="img/7.png">
+
+  <div class="conteudo-momento">
+    <span class="data">19/05/2025</span>
+
+    <p>
+      Nossa primeira vez
+    </p>
+  </div>
+</div>
+
+<div class="momento animar visivel">
+  <img src="img/4.jpg">
+
+  <div class="conteudo-momento">
+    <span class="data">24/05/2025</span>
+
+    <p>
+      Fui pedida em namoro e fui na sua casa
+    </p>
+  </div>
+</div>
+
+  <!-- FORMULÁRIO -->
+  <div class="formulario">
+    <h2>Nossos momentos</h2>
+          <h3>Temos muitas outras aventuras mas essas são algumas que são as minhas favoritas</h3>
+    <input type="file" id="fotoInput" accept="image/*">
+
+    <input type="text" id="dataInput" placeholder="Data do momento 💜">
+
+    <textarea id="textoInput" placeholder="Escreva aqui esse momento especial..."></textarea>
+
+    <button onclick="adicionarMomento()">
+      Adicionar Momento ✨
+    </button>
+  </div>
+
+  <!-- MOMENTOS -->
+  <div id="listaMomentos"></div>
+</section>
+
+<script>
+// MÚSICA
+function toggleMusica() {
+  const audio = document.getElementById("audio");
+  const btn = document.querySelector(".play-btn");
+
+  if (audio.paused) {
+    audio.play();
+    btn.innerHTML = "⏸";
+  } else {
+    audio.pause();
+    btn.innerHTML = "▶";
+  }
+}
+
+// DATA DO RELACIONAMENTO
+const dataInicio = new Date("2025-05-15T00:00:00");
+
+function atualizarContador() {
+
+  const agora = new Date();
+
+  const diferenca = agora - dataInicio;
+
+  const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+
+  const horas = Math.floor(
+    (diferenca / (1000 * 60 * 60)) % 24
+  );
+
+  const minutos = Math.floor(
+    (diferenca / (1000 * 60)) % 60
+  );
+
+  const segundos = Math.floor(
+    (diferenca / 1000) % 60
+  );
+
+  document.getElementById("dias").innerHTML = dias;
+  document.getElementById("horas").innerHTML = horas;
+  document.getElementById("minutos").innerHTML = minutos;
+  document.getElementById("segundos").innerHTML = segundos;
+}
+
+setInterval(atualizarContador, 1000);
+
+atualizarContador();
+// TEXTO
+function mostrarMensagem() {
+  const texto = "Eu te amo infinitamente 💖";
+  const el = document.getElementById("texto");
+
+  el.innerHTML = "";
+
+  let i = 0;
+
+  function digitar() {
+    if (i < texto.length) {
+      el.innerHTML += texto[i];
+      i++;
+      setTimeout(digitar, 50);
+    }
+  }
+
+  digitar();
+}
+
+// SLIDESHOW
+let index = 0;
+const slides = document.querySelectorAll(".slide");
+
+setInterval(() => {
+  slides[index].classList.remove("active");
+
+  index = (index + 1) % slides.length;
+
+  slides[index].classList.add("active");
+}, 3000);
+
+// ANIMAÇÃO AO ROLAR
+const elementos = document.querySelectorAll(".animar");
+
+function animarScroll() {
+  const alturaTela = window.innerHeight;
+
+  elementos.forEach(el => {
+    const posicao = el.getBoundingClientRect().top;
+
+    if (posicao < alturaTela - 50) {
+      el.classList.add("visivel");
+    }
+  });
+}
+
+window.addEventListener("scroll", animarScroll);
+animarScroll();
+
+// SALVAR MOMENTOS
+let momentos = JSON.parse(localStorage.getItem("momentos")) || [];
+
+function renderizarMomentos() {
+  const lista = document.getElementById("listaMomentos");
+  lista.innerHTML = "";
+
+  momentos.forEach((momento, index) => {
+    lista.innerHTML += `
+      <div class="momento animar visivel">
+        <img src="${momento.foto}">
+
+        <div class="conteudo-momento">
+          <span class="data">${momento.data}</span>
+
+          <p>${momento.texto}</p>
+
+          <button class="remover-btn" onclick="removerMomento(${index})">
+            Remover 🗑
+          </button>
+        </div>
+      </div>
+    `;
+  });
+}
+
+function adicionarMomento() {
+  const foto = document.getElementById("fotoInput").files[0];
+  const data = document.getElementById("dataInput").value;
+  const texto = document.getElementById("textoInput").value;
+
+  if (!foto || !data || !texto) {
+    alert("Preencha tudo 💖");
+    return;
+  }
+
+  const reader = new FileReader();
+
+  reader.onload = function(e) {
+    momentos.push({
+      foto: e.target.result,
+      data,
+      texto
+    });
+
+    localStorage.setItem("momentos", JSON.stringify(momentos));
+
+    renderizarMomentos();
+
+    document.getElementById("fotoInput").value = "";
+    document.getElementById("dataInput").value = "";
+    document.getElementById("textoInput").value = "";
+  }
+
+  reader.readAsDataURL(foto);
+}
+
+function removerMomento(index) {
+  momentos.splice(index, 1);
+
+  localStorage.setItem("momentos", JSON.stringify(momentos));
+
+  renderizarMomentos();
+}
+
+renderizarMomentos();
+</script>
+
+</body>
+</html>
